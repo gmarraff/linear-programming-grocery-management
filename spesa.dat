@@ -1,0 +1,143 @@
+set Pasti :=
+carbonara pancetta_sugo tonno_pomodorini pasta_cavolo pasta_genova
+pasta_calabria pasta_salsiccette riso_zucc_panc riso_zucc_sals riso_pep_sals
+brac_cavol brac_patat brac_pur brac_zucc
+bracette_cavol bracette_patat bracette_pur bracette_zucc
+;
+
+set Ingredienti :=
+zucchine peperoni uova salsicce braciole braciolette confezioni_pancetta
+pomodorini cavolfiore pesto_genova pesto_calabria latte pure
+;
+
+set Confezioni :=
+pancetta_buona sacco_zucchine_mezzo_kg sacco_peperone salsiccette_buone
+braciole_risparmio braciolette_risparmio uova_fresche pomodorini
+cavolfiore_sacchetto pesto_genovese pesto_calabrese
+latte pure
+;
+
+set MacroPasti := pranzo cena;
+set PastiCategorizzati[pranzo] :=
+carbonara pancetta_sugo tonno_pomodorini pasta_cavolo pasta_genova
+pasta_calabria pasta_salsiccette riso_zucc_panc riso_zucc_sals riso_pep_sals
+;
+set PastiCategorizzati[cena] :=
+brac_cavol brac_patat brac_pur brac_zucc
+bracette_cavol bracette_patat bracette_pur bracette_zucc
+;
+
+param M := 7;
+param prezzi :=
+pancetta_buona 1.7
+sacco_zucchine_mezzo_kg 1.25
+sacco_peperone 0.7
+salsiccette_buone 2.68
+braciole_risparmio 4.15
+braciolette_risparmio 5.13
+uova_fresche 0.9
+pomodorini 1.5
+cavolfiore_sacchetto 0.8
+pesto_genovese 2
+pesto_calabrese 2
+latte 0.65
+pure 2.5
+;
+param contenuto : zucchine peperoni uova salsicce braciole braciolette confezioni_pancetta pomodorini cavolfiore pesto_genova pesto_calabria latte pure :=
+pancetta_buona	0	0	0	0	0	0	2	0	0	0	0	0	0
+sacco_zucchine_mezzo_kg	4	0	0	0	0	0	0	0	0	0	0	0	0
+sacco_peperone	0	1	0	0	0	0	0	0	0	0	0	0	0
+salsiccette_buone	0	0	0	8	0	0	0	0	0	0	0	0	0
+braciole_risparmio	0	0	0	0	5	0	0	0	0	0	0	0	0
+braciolette_risparmio	0	0	0	0	0	6	0	0	0	0	0	0	0
+uova_fresche	0	0	4	0	0	0	0	0	0	0	0	0	0
+pomodorini	0	0	0	0	0	0	0	1	0	0	0	0	0
+cavolfiore_sacchetto	0	0	0	0	0	0	0	0	1	0	0	0	0
+pesto_genovese	0	0	0	0	0	0	0	0	0	1	0	0	0
+pesto_calabrese	0	0	0	0	0	0	0	0	0	0	1	0	0
+latte	0	0	0	0	0	0	0	0	0	0	0	1	0
+pure	0	0	0	0	0	0	0	0	0	0	0	0	6
+;
+param composizionePasti : zucchine peperoni uova salsicce braciole braciolette confezioni_pancetta pomodorini cavolfiore pesto_genova pesto_calabria latte pure :=
+carbonara	0	0	1	0	0	0	1	0	0	0	0	0	0
+pancetta_sugo	0	0	0	0	0	0	1	0	0	0	0	0	0
+tonno_pomodorini	0	0	0	0	0	0	0	0.5	0	0	0	0	0
+pasta_cavolo	0	0	0	0	0	0	0	0	0.5	0	0	0	0
+pasta_genova	0	0	0	0	0	0	0	0	0	0.3	0	0	0
+pasta_calabria	0	0	0	0	0	0	0	0	0	0	0.3	0	0
+pasta_salsiccette	0	0	0	4	0	0	0	0	0	0	0	0	0
+riso_zucc_panc	1	0	0	0	0	0	1	0	0	0	0	0	0
+riso_zucc_sals	1	0	0	4	0	0	0	0	0	0	0	0	0
+riso_pep_sals	0	0.5	0	4	0	0	0	0	0	0	0	0	0
+brac_cavol	0	0	0	0	2	0	0	0	0.5	0	0	0 0
+brac_patat	0	0	0	0	2	0	0	0	0	0	0	0 0
+brac_pur	0	0	0	0	2	0	0	0	0	0	0	0.125 1
+brac_zucc	3	0	0	0	2	0	0	0	0	0	0	0 0
+bracette_cavol	0	0	0	0	0	2	0	0	0.5	0	0	0 0
+bracette_patat	0	0	0	0	0	2	0	0	0	0	0	0 0
+bracette_pur	0	0	0	0	0	2	0	0	0	0	0	0.125 1
+bracette_zucc	3	0	0	0	0	2	0	0	0	0	0	0 0
+;
+param minVarieta :=
+pranzo 4
+cena 4
+;
+param richiestaMinimaMacroPasti :=
+pranzo 7
+cena 7
+;
+param richiesteMinimePasti :=
+carbonara 1
+pancetta_sugo 0
+tonno_pomodorini 0
+pasta_cavolo 0
+pasta_genova 0
+pasta_calabria 0
+pasta_salsiccette 0
+riso_zucc_panc 1
+riso_zucc_sals 0
+riso_pep_sals 0
+brac_cavol 0
+brac_patat 1
+brac_pur 1
+brac_zucc 0
+bracette_cavol 0
+bracette_patat 0
+bracette_pur 0
+bracette_zucc 0
+;
+param richiesteMassimePasti :=
+carbonara 2
+pancetta_sugo 7
+tonno_pomodorini 2
+pasta_cavolo 1
+pasta_genova 7
+pasta_calabria 7
+pasta_salsiccette 7
+riso_zucc_panc 7
+riso_zucc_sals 7
+riso_pep_sals 7
+brac_cavol 7
+brac_patat 2
+brac_pur 7
+brac_zucc 7
+bracette_cavol 7
+bracette_patat 7
+bracette_pur 7
+bracette_zucc 7
+;
+param richiesteMinimeIngredienti :=
+zucchine 0
+peperoni 0
+uova 0
+salsicce 0
+braciole 0
+braciolette 0
+confezioni_pancetta 0
+pomodorini 0
+cavolfiore 0
+pesto_genova 0
+pesto_calabria 0
+latte 0
+pure 0
+;
