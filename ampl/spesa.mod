@@ -7,6 +7,7 @@ set PastiCategorizzati{MacroPasti}; #Pasti divisi in cateogorie
 
 param M; #Variabile di supporto alle attivazioni logiche
 param prezzi{Confezioni}; #Ogni confezione ha un suo prezzo
+param disponibilita{Ingredienti}; #Indica la disponibilita di ingredienti già presente in credenza
 param contenuto{Confezioni, Ingredienti}; #Ogni confezione contiene tot ingredienti per ogni tipo
 param composizionePasti{Pasti, Ingredienti}; #Ogni pasto è formato da tot ingredienti
 param minVarieta{MacroPasti}; #Varieta minima di pasti per macropasto
@@ -50,6 +51,8 @@ subject to st_richiestaMinimaIngrediente {i in Ingredienti}:
 subject to st_ingredientiNecessari{p in Pasti, i in Ingredienti}: #per ogni ingrediente del pasto
   composizionePasti[p, i]*pasti[p] <= ( #gli ingredienti necessari alla quantita di pasto devono essere minori o uguali
     sum {c in Confezioni} ( confezioni[c]*contenuto[c, i] ) #alla somma degli ingredienti che ho acquistato
+    + #aggiungendo
+    disponibilita[i] #la disponibilità dell'ingrediente in credenza
     - #sottraendo
     sum {pa in Pasti: pa != p} ( pasti[pa]*composizionePasti[pa, i] ) #la somma dei pasti che voglioni cucinare contenente lo stesso ingrediente (non considerando quello corrente)
   )

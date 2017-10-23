@@ -43,6 +43,21 @@ pesto_calabrese 2
 latte 0.65
 pure 2.5
 ;
+param disponibilita :=
+zucchine 4
+peperoni 0.5
+uova 5
+salsicce 0
+braciole 3
+braciolette 4
+confezioni_pancetta 1.5
+pomodorini 1
+cavolfiore 1
+pesto_genova 0
+pesto_calabria 0
+latte 1.5
+pure 0
+;
 param contenuto : zucchine peperoni uova salsicce braciole braciolette confezioni_pancetta pomodorini cavolfiore pesto_genova pesto_calabria latte pure :=
 pancetta_buona	0	0	0	0	0	0	2	0	0	0	0	0	0
 sacco_zucchine_mezzo_kg	4	0	0	0	0	0	0	0	0	0	0	0	0
