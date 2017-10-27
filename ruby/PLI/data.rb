@@ -3,7 +3,7 @@ require "#{Dir.pwd}/exceptions/sets_not_valid.rb"
 module PLI
   class Data
     def sanitize_string(str)
-      str.downcase.gsub(' ', '_')
+      str.strip.downcase.gsub(' ', '_')
     end
     def mono_dimensional_param(set, param_array, set_name)
       final_param = {}

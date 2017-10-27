@@ -1,4 +1,5 @@
-require "./data.rb"
+require './data'
+require './exceptions/set_empty'
 module PLI
   module Spesa
     class Data < ::PLI::Data
@@ -33,32 +34,35 @@ module PLI
       #  cena: ['cotoletta']
       # }
       def plates=(set)
+        raise PLI::Exceptions::SetEmpty.new('plates') if set.empty?
         set.each {|meals, plates| plates.collect{|plate| sanitize_string(plate.to_s)}}
-        @plates_in_meals = set
+        @plates_in_meals = set.collect{|k,v| [k.to_s, v]}.to_h #Trasforma in stringhe le chiavi
         @meals = set.keys.collect{|meal| sanitize_string(meal.to_s)}
         @plates = []
         set.each{|meals, plates| @plates += plates}
-      rescue NoMethodError
+      rescue NoMethodError, TypeError
         raise PLI::Exceptions::SetNotValid.new('plates')
       end
       def ingredients=(_ingredients)
         @ingredients = _ingredients.collect{|ingredient| sanitize_string(ingredient)}
+        raise PLI::Exceptions::SetEmpty.new('ingredients') if _ingredients.empty?
       rescue NoMethodError
         raise PLI::Exceptions::SetNotValid.new('ingredients')
       end
       def packages=(_packages)
         @packages = _packages.collect{|package| sanitize_string(package)}
+        raise PLI::Exceptions::SetEmpty.new('packages') if _packages.empty?
       rescue NoMethodError
         raise PLI::Exceptions::SetNotValid.new('ingredients')
       end
       def meals=(value)
         @meals = []
       end
-      def m=(value)
+      def upper_bound=(value)
         if value.is_a?Integer
           @upper_bound = value
         else
-          raise TypeError('Must be an integer!')
+          raise ::TypeError.new('Must be an integer!')
         end
       end
       #{'pancetta mondadori' : 22.5}
