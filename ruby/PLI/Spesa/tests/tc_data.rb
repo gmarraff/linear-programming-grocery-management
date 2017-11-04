@@ -42,4 +42,17 @@ class TestSpesaData < Test::Unit::TestCase
     @obj.prices = {'pancetta mondadori'=>5}
     assert_equal({'pancetta_mondadori'=>5}, @obj.prices)
   end
+  def test_validation_correct
+    @obj.prices = {pancetta_mondadori: 5}
+    @obj.meals_variety = {pranzo: 1}
+    @obj.upper_bound = 7
+    @obj.packages_content = {pancetta_mondadori: {pancetta: 1}}
+    @obj.recipes = {carbonara: {pancetta: 1, uova: 1}}
+    @obj.needed_meals = {pranzo: 7}
+    @obj.max_plates= {carbonara: 7}
+    assert_equal(true, @obj.is_valid?)
+  end
+  def test_validation_incorrect
+    assert_equal(false, @obj.is_valid?)
+  end
 end

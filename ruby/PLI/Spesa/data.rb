@@ -18,10 +18,10 @@ module PLI
         self.packages = _packages
       end
       def is_valid?
+        return false if @upper_bound.nil? or @upper_bound < 0
         [
-            @plates, @ingredients, @upper_bound, @prices, @packages_content,
-            @recipes, @meals_variety, @needed_meals, @min_plates,
-            @max_plates, @min_ingredients
+            @plates, @ingredients, @packages, @prices, @packages_content,
+            @recipes, @meals_variety, @needed_meals, @max_plates
         ].each do |attr|
           return false if attr.nil? or attr.empty?
         end
