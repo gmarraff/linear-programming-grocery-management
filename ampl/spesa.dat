@@ -44,19 +44,19 @@ latte 0.65
 pure 2.5
 ;
 param disponibilita :=
-zucchine 4
-peperoni 0.5
-uova 5
+zucchine 0
+peperoni 0
+uova 0
 salsicce 0
-braciole 3
-braciolette 4
-confezioni_pancetta 1.5
-pomodorini 1
-cavolfiore 1
+braciole 0
+braciolette 0
+confezioni_pancetta 0
+pomodorini 0
+cavolfiore 0
 pesto_genova 0
 pesto_calabria 0
-latte 1.5
-pure 0
+latte 1
+pure 5
 ;
 param contenuto : zucchine peperoni uova salsicce braciole braciolette confezioni_pancetta pomodorini cavolfiore pesto_genova pesto_calabria latte pure :=
 pancetta_buona	0	0	0	0	0	0	2	0	0	0	0	0	0
@@ -98,8 +98,8 @@ pranzo 4
 cena 4
 ;
 param richiestaMinimaMacroPasti :=
-pranzo 7
-cena 7
+pranzo 6
+cena 6
 ;
 param richiesteMinimePasti :=
 carbonara 1
@@ -109,12 +109,12 @@ pasta_cavolo 0
 pasta_genova 0
 pasta_calabria 0
 pasta_salsiccette 0
-riso_zucc_panc 1
+riso_zucc_panc 0
 riso_zucc_sals 0
 riso_pep_sals 0
 brac_cavol 0
-brac_patat 1
-brac_pur 1
+brac_patat 0
+brac_pur 0
 brac_zucc 0
 bracette_cavol 0
 bracette_patat 0
@@ -124,21 +124,21 @@ bracette_zucc 0
 param richiesteMassimePasti :=
 carbonara 2
 pancetta_sugo 7
-tonno_pomodorini 2
+tonno_pomodorini 0
 pasta_cavolo 1
-pasta_genova 7
-pasta_calabria 7
+pasta_genova 3
+pasta_calabria 3
 pasta_salsiccette 7
 riso_zucc_panc 7
 riso_zucc_sals 7
 riso_pep_sals 7
 brac_cavol 7
 brac_patat 2
-brac_pur 7
+brac_pur 2
 brac_zucc 7
 bracette_cavol 7
 bracette_patat 7
-bracette_pur 7
+bracette_pur 1
 bracette_zucc 7
 ;
 param richiesteMinimeIngredienti :=
