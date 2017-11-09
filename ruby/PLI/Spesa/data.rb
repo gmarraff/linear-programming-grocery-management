@@ -1,5 +1,5 @@
-require './data'
-require './exceptions/set_empty'
+require_relative '../data'
+require_relative '../exceptions/set_empty'
 module PLI
   module Spesa
     class Data < ::PLI::Data
@@ -35,8 +35,8 @@ module PLI
       # }
       def plates=(set)
         raise PLI::Exceptions::SetEmpty.new('plates') if set.empty?
-        set.each {|meals, plates| plates.collect{|plate| sanitize_string(plate.to_s)}}
-        @plates_in_meals = set.collect{|k,v| [k.to_s, v]}.to_h #Trasforma in stringhe le chiavi
+        set.each {|meals, plates| plates.collect!{|plate| sanitize_string(plate.to_s)}}
+        @plates_in_meals = set.collect{|k,v| [sanitize_string(k.to_s), v]}.to_h #Trasforma in stringhe le chiavi
         @meals = set.keys.collect{|meal| sanitize_string(meal.to_s)}
         @plates = []
         set.each{|meals, plates| @plates += plates}
@@ -59,10 +59,10 @@ module PLI
         @meals = []
       end
       def upper_bound=(value)
-        if value.is_a?Integer
+        if value.is_a?Integer and value > 0
           @upper_bound = value
         else
-          raise ::TypeError.new('Must be an integer!')
+          raise ::TypeError.new('Must be a positive integer!')
         end
       end
       #{'pancetta mondadori' : 22.5}
@@ -71,7 +71,7 @@ module PLI
       end
       #{'confezione_pancetta' : 2}
       def stock=(_stock)
-        @stock = mono_dimensional_param(@packages, _stock, 'packages')
+        @stock = mono_dimensional_param(@ingredients, _stock, 'packages')
       end
       def meals_variety=(_variety)
         @meals_variety = mono_dimensional_param(@meals, _variety, 'meals')
@@ -79,13 +79,13 @@ module PLI
       def needed_meals=(_need)
         @needed_meals = mono_dimensional_param(@meals, _need, 'meals')
       end
-      def min_plates(_values)
+      def min_plates=(_values)
         @min_plates = mono_dimensional_param(@plates, _values, 'plates')
       end
-      def max_plates(_values)
+      def max_plates=(_values)
         @max_plates = mono_dimensional_param(@plates, _values, 'plates')
       end
-      def min_ingredients(_values)
+      def min_ingredients=(_values)
         @min_ingredients = mono_dimensional_param(@ingredients, _values, 'ingredients')
       end
       #{'pancetta_mondadori': {'confezione_pancetta': 2}}

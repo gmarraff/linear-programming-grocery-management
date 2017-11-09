@@ -35,6 +35,7 @@ class TestSpesaData < Test::Unit::TestCase
   end
   def test_m_incorrect
     assert_raise( TypeError ){@obj.upper_bound = 5.5}
+    assert_raise( TypeError ){@obj.upper_bound = -21}
     assert_raise( TypeError ){@obj.upper_bound = 'a'}
   end
 

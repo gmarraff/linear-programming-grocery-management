@@ -1,5 +1,5 @@
-require "#{Dir.pwd}/exceptions/inconsistency.rb"
-require "#{Dir.pwd}/exceptions/sets_not_valid.rb"
+require_relative 'exceptions/inconsistency.rb'
+require_relative 'exceptions/sets_not_valid.rb'
 module PLI
   class Data
     def sanitize_string(str)
