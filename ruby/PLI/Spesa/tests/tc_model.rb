@@ -82,7 +82,7 @@ class TestSpesaModel < Test::Unit::TestCase
     @valid_data.recipes = {
         carbonara: {uova: 1, pancetta: 1},
         pasta_al_pesto: {pesto: 1, uova: 0.5}
-    }
+    }4
 
     @invalid_data = PLI::Spesa::Data.new(plates, packages, ingredients)
   end

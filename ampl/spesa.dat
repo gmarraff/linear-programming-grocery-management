@@ -55,8 +55,8 @@ pomodorini 0
 cavolfiore 0
 pesto_genova 0
 pesto_calabria 0
-latte 1
-pure 5
+latte 0
+pure 4
 ;
 param contenuto : zucchine peperoni uova salsicce braciole braciolette confezioni_pancetta pomodorini cavolfiore pesto_genova pesto_calabria latte pure :=
 pancetta_buona	0	0	0	0	0	0	2	0	0	0	0	0	0
@@ -98,8 +98,8 @@ pranzo 4
 cena 4
 ;
 param richiestaMinimaMacroPasti :=
-pranzo 6
-cena 6
+pranzo 7
+cena 7
 ;
 param richiesteMinimePasti :=
 carbonara 1
@@ -125,19 +125,19 @@ param richiesteMassimePasti :=
 carbonara 2
 pancetta_sugo 7
 tonno_pomodorini 0
-pasta_cavolo 1
+pasta_cavolo 0
 pasta_genova 3
 pasta_calabria 3
 pasta_salsiccette 7
 riso_zucc_panc 7
 riso_zucc_sals 7
 riso_pep_sals 7
-brac_cavol 7
-brac_patat 2
+brac_cavol 0
+brac_patat 1
 brac_pur 2
 brac_zucc 7
-bracette_cavol 7
-bracette_patat 7
+bracette_cavol 0
+bracette_patat 0
 bracette_pur 1
 bracette_zucc 7
 ;
